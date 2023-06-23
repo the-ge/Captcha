@@ -16,7 +16,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     /**
      * @var array
      */
-    protected $fingerprint = array();
+    protected $fingerprint = [];
 
     /**
      * @var bool
@@ -26,7 +26,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     /**
      * @var array
      */
-    protected $textColor = array();
+    protected $textColor = [];
 
     /**
      * @var array
@@ -41,7 +41,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     /**
      * @var array
      */
-    protected $backgroundImages = array();
+    protected $backgroundImages = [];
 
     /**
      * @var resource
@@ -104,7 +104,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
      *
      * @var array
      */
-    protected $allowedBackgroundImageTypes = array('image/png', 'image/jpeg', 'image/gif');
+    protected $allowedBackgroundImageTypes = ['image/png', 'image/jpeg', 'image/gif'];
 
     /**
      * The image contents
@@ -219,7 +219,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
      */
     public function setTextColor($r, $g, $b)
     {
-        $this->textColor = array($r, $g, $b);
+        $this->textColor = [$r, $g, $b];
 
         return $this;
     }
@@ -229,14 +229,14 @@ class CaptchaBuilder implements CaptchaBuilderInterface
      */
     public function setBackgroundColor($r, $g, $b)
     {
-        $this->backgroundColor = array($r, $g, $b);
+        $this->backgroundColor = [$r, $g, $b];
 
         return $this;
     }
 
     public function setLineColor($r, $g, $b)
     {
-        $this->lineColor = array($r, $g, $b);
+        $this->lineColor = [$r, $g, $b];
 
         return $this;
     }
@@ -349,7 +349,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
         $y = (int) round(($height - $textHeight) / 2) + $size;
 
         if (!$this->textColor) {
-            $textColor = array($this->rand(0, 150), $this->rand(0, 150), $this->rand(0, 150));
+            $textColor = [$this->rand(0, 150), $this->rand(0, 150), $this->rand(0, 150)];
         } else {
             $textColor = $this->textColor;
         }
@@ -410,7 +410,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
             $this->fingerprint = $fingerprint;
             $this->useFingerprint = true;
         } else {
-            $this->fingerprint = array();
+            $this->fingerprint = [];
             $this->useFingerprint = false;
         }
 
@@ -597,7 +597,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     protected function rand($min, $max)
     {
         if (!is_array($this->fingerprint)) {
-            $this->fingerprint = array();
+            $this->fingerprint = [];
         }
 
         if ($this->useFingerprint) {
@@ -671,11 +671,11 @@ class CaptchaBuilder implements CaptchaBuilderInterface
      */
     protected function getRGB($col)
     {
-        return array(
+        return [
             (int) ($col >> 16) & 0xff,
             (int) ($col >> 8) & 0xff,
             (int) ($col) & 0xff,
-        );
+        ];
     }
 
     /**
