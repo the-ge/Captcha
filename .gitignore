@@ -1,7 +1,6 @@
 .idea/
 .phpunit.cache*
 .phpunit.result*
-/composer.lock
 /*.jpg
 demo/*.jpg
 demo/*.pgm
