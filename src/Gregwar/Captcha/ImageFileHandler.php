@@ -75,7 +75,7 @@ class ImageFileHandler
      */
     public function collectGarbage()
     {
-        if (!mt_rand(1, $this->gcFreq) == 1) {
+        if (mt_rand(1, $this->gcFreq) !== 1) {
             return false;
         }
 
