@@ -2,7 +2,7 @@
 
 namespace Gregwar\Captcha;
 
-use \Exception;
+use Exception;
 
 /**
  * Builds a new captcha image
@@ -136,7 +136,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     public function __construct($phrase = null, PhraseBuilderInterface $builder = null)
     {
         if ($builder === null) {
-            $this->builder = new PhraseBuilder;
+            $this->builder = new PhraseBuilder();
         } else {
             $this->builder = $builder;
         }
@@ -415,7 +415,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
         }
 
         if ($font === null) {
-            $font = __DIR__ . '/Font/captcha'.$this->rand(0, 5).'.ttf';
+            $font = __DIR__ . '/Font/captcha' . $this->rand(0, 5) . '.ttf';
         }
 
         if (empty($this->backgroundImages)) {
@@ -690,7 +690,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
         // check if file exists
         if (!file_exists($backgroundImage)) {
             $backgroundImageExploded = explode('/', $backgroundImage);
-            $imageFileName = count($backgroundImageExploded) > 1? $backgroundImageExploded[count($backgroundImageExploded)-1] : $backgroundImage;
+            $imageFileName = count($backgroundImageExploded) > 1 ? $backgroundImageExploded[count($backgroundImageExploded)-1] : $backgroundImage;
 
             throw new Exception('Invalid background image: ' . $imageFileName);
         }

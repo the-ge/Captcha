@@ -1,6 +1,13 @@
 <?php declare(strict_types=1);
 
+/**
+ * vendor/bin/ecs check src
+ * vendor/bin/ecs check src --fix
+ */
+
 use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
+use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
+use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
@@ -15,13 +22,21 @@ return static function (ECSConfig $ecsConfig): void {
         __DIR__.'/packages-tests',
     ]);
 
-    $ecsConfig->ruleWithConfiguration(ArraySyntaxFixer::class, [
-        'syntax' => 'short',
+    $ecsConfig->sets([
+        SetList::PSR_12,
+        //SetList::COMMON,
+        //SetList::SYMPLIFY,
     ]);
 
-    //$ecsConfig->sets([
-    //    SetList::SYMPLIFY,
-    //    SetList::COMMON,
-    //    SetList::PSR_12
+    $ecsConfig->skip([
+        BinaryOperatorSpacesFixer::class,
+        OrderedImportsFixer::class,
+    ]);
+
+    //$ecsConfig->ruleWithConfiguration(ArraySyntaxFixer::class, [
+    //    'syntax' => 'short',
+    //]);
+    //$ecsConfig->ruleWithConfiguration(BinaryOperatorSpacesFixer::class, [
+    //    'default' => 'align_single_space_minimal',
     //]);
 };
