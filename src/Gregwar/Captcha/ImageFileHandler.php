@@ -96,7 +96,7 @@ class ImageFileHandler
     /**
      * Creates the folder if it doesn't exist
      */
-    protected function createFolderIfMissing()
+    protected function createFolderIfMissing(): void
     {
         if (!file_exists($this->webPath . '/' . $this->imageFolder)) {
             mkdir($this->webPath . '/' . $this->imageFolder, 0755);

@@ -5,7 +5,8 @@
  * vendor/bin/ecs check src --fix
  */
 
-use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
+use PhpCsFixer\Fixer\FunctionNotation\UseArrowFunctionsFixer;
+use PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer;
 use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
 use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
@@ -22,21 +23,23 @@ return static function (ECSConfig $ecsConfig): void {
         __DIR__.'/packages-tests',
     ]);
 
-    $ecsConfig->sets([
-        SetList::PSR_12,
-        //SetList::COMMON,
-        //SetList::SYMPLIFY,
-    ]);
-
-    $ecsConfig->skip([
-        BinaryOperatorSpacesFixer::class,
-        OrderedImportsFixer::class,
-    ]);
-
-    //$ecsConfig->ruleWithConfiguration(ArraySyntaxFixer::class, [
-    //    'syntax' => 'short',
+    //$ecsConfig->sets([
+    //    //SetList::PSR_12,
+    //    SetList::COMMON,
+    //    //SetList::SYMPLIFY,
     //]);
+
+    //$ecsConfig->skip([
+    //    BinaryOperatorSpacesFixer::class,
+    //    OrderedImportsFixer::class,
+    //]);
+
     //$ecsConfig->ruleWithConfiguration(BinaryOperatorSpacesFixer::class, [
     //    'default' => 'align_single_space_minimal',
     //]);
+    //$ecsConfig->ruleWithConfiguration(::class, [
+    //    '' => '',
+    //]);
+
+    $ecsConfig->rule(VoidReturnFixer::class);
 };

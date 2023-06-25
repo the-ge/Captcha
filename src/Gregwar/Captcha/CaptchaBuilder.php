@@ -147,7 +147,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     /**
      * Setting the phrase
      */
-    public function setPhrase($phrase)
+    public function setPhrase($phrase): void
     {
         $this->phrase = (string) $phrase;
     }
@@ -267,7 +267,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     /**
      * Draw lines over the image
      */
-    protected function drawLine($image, $width, $height, $tcol = null)
+    protected function drawLine($image, $width, $height, $tcol = null): void
     {
         if ($this->lineColor === null) {
             $red = $this->rand(100, 255);
@@ -301,7 +301,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     /**
      * Apply some post effects
      */
-    protected function postEffect($image)
+    protected function postEffect($image): void
     {
         if (!function_exists('imagefilter')) {
             return;
@@ -394,7 +394,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     /**
      * Builds while the code is readable against an OCR
      */
-    public function buildAgainstOCR($width = 150, $height = 40, $font = null, $fingerprint = null)
+    public function buildAgainstOCR($width = 150, $height = 40, $font = null, $fingerprint = null): void
     {
         do {
             $this->build($width, $height, $font, $fingerprint);
@@ -542,7 +542,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     /**
      * Saves the Captcha to a jpeg file
      */
-    public function save($filename, $quality = 90)
+    public function save($filename, $quality = 90): void
     {
         imagejpeg($this->contents, $filename, $quality);
     }
@@ -577,7 +577,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     /**
      * Outputs the image
      */
-    public function output($quality = 90)
+    public function output($quality = 90): void
     {
         imagejpeg($this->contents, null, $quality);
     }
