@@ -204,7 +204,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
      */
     public function testPhrase($phrase)
     {
-        return ($this->builder->niceize($phrase) == $this->builder->niceize($this->getPhrase()));
+        return ($this->builder->niceize($phrase) === $this->builder->niceize($this->getPhrase()));
     }
 
     /**
@@ -308,17 +308,17 @@ class CaptchaBuilder implements CaptchaBuilderInterface
             return;
         }
 
-        if ($this->backgroundColor != null || $this->textColor != null) {
+        if ($this->backgroundColor !== null || $this->textColor !== null) {
             return;
         }
 
         // Negate ?
-        if ($this->rand(0, 1) == 0) {
+        if ($this->rand(0, 1) === 0) {
             imagefilter($image, IMG_FILTER_NEGATE);
         }
 
         // Edge ?
-        if ($this->rand(0, 10) == 0) {
+        if ($this->rand(0, 10) === 0) {
             imagefilter($image, IMG_FILTER_EDGEDETECT);
         }
 
@@ -326,7 +326,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
         imagefilter($image, IMG_FILTER_CONTRAST, $this->rand(-50, 10));
 
         // Colorize
-        if ($this->rand(0, 5) == 0) {
+        if ($this->rand(0, 5) === 0) {
             imagefilter($image, IMG_FILTER_COLORIZE, $this->rand(-80, 50), $this->rand(-80, 50), $this->rand(-80, 50));
         }
     }
@@ -422,7 +422,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
         if (empty($this->backgroundImages)) {
             // if background images list is not set, use a color fill as a background
             $image   = imagecreatetruecolor($width, $height);
-            if ($this->backgroundColor == null) {
+            if ($this->backgroundColor === null) {
                 $bg = imagecolorallocate($image, $this->rand(200, 255), $this->rand(200, 255), $this->rand(200, 255));
             } else {
                 $color = $this->backgroundColor;
@@ -444,7 +444,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
             $effects = $this->rand($square/3000, $square/2000);
 
             // set the maximum number of lines to draw in front of the text
-            if ($this->maxBehindLines != null && $this->maxBehindLines > 0) {
+            if ($this->maxBehindLines !== null && $this->maxBehindLines > 0) {
                 $effects = min($this->maxBehindLines, $effects);
             }
 
@@ -464,7 +464,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
             $effects = $this->rand($square/3000, $square/2000);
 
             // set the maximum number of lines to draw in front of the text
-            if ($this->maxFrontLines != null && $this->maxFrontLines > 0) {
+            if ($this->maxFrontLines !== null && $this->maxFrontLines > 0) {
                 $effects = min($this->maxFrontLines, $effects);
             }
 
@@ -506,7 +506,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
                 $Vy = $y - $Y;
                 $Vn = sqrt($Vx * $Vx + $Vy * $Vy);
 
-                if ($Vn != 0) {
+                if ($Vn !== 0) {
                     $Vn2 = $Vn + 4 * sin($Vn / 30);
                     $nX  = $X + ($Vx * $Vn2 / $Vn);
                     $nY  = $Y + ($Vy * $Vn2 / $Vn);
@@ -533,7 +533,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
                     $p = $this->getCol($image, round($nX), round($nY), $bg);
                 }
 
-                if ($p == 0) {
+                if ($p === 0) {
                     $p = $bg;
                 }
 
