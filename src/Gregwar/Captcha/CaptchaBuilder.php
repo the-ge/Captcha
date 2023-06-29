@@ -609,7 +609,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
             $value = current($this->fingerprint);
             next($this->fingerprint);
         } else {
-            $value = mt_rand((int)$min, (int)$max);
+            $value = mt_rand((int) $min, (int) $max);
             $this->fingerprint[] = $value;
         }
 
