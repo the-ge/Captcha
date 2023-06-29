@@ -3,6 +3,7 @@
 namespace Gregwar\Captcha;
 
 use Exception;
+use GdImage;
 
 /**
  * Builds a new captcha image
@@ -514,15 +515,19 @@ class CaptchaBuilder implements CaptchaBuilderInterface
                     $nY = $Y;
                 }
                 $nY = $nY + $scale * sin($phase + $nX * 0.2);
+                $nX_floor = (int) floor($nX);
+                $nY_floor = (int) floor($nY);
+                $nX_ceil = (int) ceil($nX);
+                $nY_ceil = (int) ceil($nY);
 
                 if ($this->interpolation) {
                     $p = $this->interpolate(
-                        $nX - floor($nX),
-                        $nY - floor($nY),
-                        $this->getCol($image, floor($nX), floor($nY), $bg),
-                        $this->getCol($image, ceil($nX), floor($nY), $bg),
-                        $this->getCol($image, floor($nX), ceil($nY), $bg),
-                        $this->getCol($image, ceil($nX), ceil($nY), $bg)
+                        $nX - (int) $nX_floor,
+                        $nY - (int) $nY_floor,
+                        $this->getCol($image, $nX_floor, $nY_floor, $bg),
+                        $this->getCol($image, $nX_ceil, $nY_floor, $bg),
+                        $this->getCol($image, $nX_floor, $nY_ceil, $bg),
+                        $this->getCol($image, $nX_ceil, $nY_ceil, $bg)
                     );
                 } else {
                     $p = $this->getCol($image, round($nX), round($nY), $bg);
@@ -653,7 +658,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
      *
      * @return int
      */
-    protected function getCol($image, $x, $y, $background)
+    protected function getCol(GdImage $image, int $x, int $y, $background)
     {
         $L = imagesx($image);
         $H = imagesy($image);
