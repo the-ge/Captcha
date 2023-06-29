@@ -53,9 +53,9 @@ return static function (ECSConfig $ecsConfig): void {
     //$ecsConfig->rule(VoidReturnFixer::class);               // [2]
 
     //$ecsConfig->rule(DeclareStrictTypesFixer::class);
-    $ecsConfig->rule(StrictComparisonFixer::class);
-    //$ecsConfig->rule(NoEmptyPhpdocFixer::class);
-    //$ecsConfig->rule(NoSuperfluousPhpdocTagsFixer::class);
+    //$ecsConfig->rule(StrictComparisonFixer::class);
+    $ecsConfig->rule(NoSuperfluousPhpdocTagsFixer::class);
+    $ecsConfig->rule(NoEmptyPhpdocFixer::class);
     //$ecsConfig->rule(CastSpacesFixer::class);
     //$ecsConfig->rule(NoWhitespaceInBlankLineFixer::class);
     //$ecsConfig->rule(SuperfluousWhitespaceSniff::class);

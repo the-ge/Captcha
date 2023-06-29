@@ -617,12 +617,6 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     }
 
     /**
-     * @param $x
-     * @param $y
-     * @param $nw
-     * @param $ne
-     * @param $sw
-     * @param $se
      *
      * @return int
      */
@@ -652,9 +646,6 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     }
 
     /**
-     * @param $image
-     * @param $x
-     * @param $y
      *
      * @return int
      */
@@ -670,7 +661,6 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     }
 
     /**
-     * @param $col
      *
      * @return array
      */

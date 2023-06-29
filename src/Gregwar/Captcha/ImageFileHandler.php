@@ -36,12 +36,7 @@ class ImageFileHandler
      */
     protected $expiration;
 
-    /**
-     * @param $imageFolder
-     * @param $webPath
-     * @param $gcFreq
-     * @param $expiration
-     */
+    
     public function __construct($imageFolder, $webPath, $gcFreq, $expiration)
     {
         $this->imageFolder      = $imageFolder;
