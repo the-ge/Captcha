@@ -506,7 +506,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
                 $Vy = $y - $Y;
                 $Vn = sqrt($Vx * $Vx + $Vy * $Vy);
 
-                if ($Vn !== 0) {
+                if ($Vn !== 0.0) {
                     $Vn2 = $Vn + 4 * sin($Vn / 30);
                     $nX  = $X + ($Vx * $Vn2 / $Vn);
                     $nY  = $Y + ($Vy * $Vn2 / $Vn);
