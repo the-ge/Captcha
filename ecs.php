@@ -34,13 +34,13 @@ return static function (ECSConfig $ecsConfig): void {
     ]);
 
     //$ecsConfig->sets([
-    //    SetList::PSR_12,                                  // [1]
+    //    SetList::PSR_12,                                      // [1]
     //    //SetList::SYMPLIFY,
     //]);
 
     //$ecsConfig->skip([
-    //    BinaryOperatorSpacesFixer::class,                 // [1]
-    //    OrderedImportsFixer::class,                       // [1]
+    //    BinaryOperatorSpacesFixer::class,                     // [1]
+    //    OrderedImportsFixer::class,                           // [1]
     //]);
 
     //$ecsConfig->ruleWithConfiguration(BinaryOperatorSpacesFixer::class, [
@@ -50,13 +50,13 @@ return static function (ECSConfig $ecsConfig): void {
     //    '' => '',
     //]);
 
-    //$ecsConfig->rule(VoidReturnFixer::class);               // [2]
+    //$ecsConfig->rule(VoidReturnFixer::class);                 // [2]
 
-    //$ecsConfig->rule(DeclareStrictTypesFixer::class);
-    //$ecsConfig->rule(StrictComparisonFixer::class);
-    //$ecsConfig->rule(NoSuperfluousPhpdocTagsFixer::class);
-    //$ecsConfig->rule(NoEmptyPhpdocFixer::class);
-    //$ecsConfig->rule(CastSpacesFixer::class);
-    $ecsConfig->rule(NoWhitespaceInBlankLineFixer::class);
-    $ecsConfig->rule(SuperfluousWhitespaceSniff::class);
+    //$ecsConfig->rule(DeclareStrictTypesFixer::class);         // [3]
+    //$ecsConfig->rule(StrictComparisonFixer::class);           // [4]
+    //$ecsConfig->rule(NoSuperfluousPhpdocTagsFixer::class);    // [5]
+    //$ecsConfig->rule(NoEmptyPhpdocFixer::class);              // [6]
+    //$ecsConfig->rule(CastSpacesFixer::class);                 // [7]
+    //$ecsConfig->rule(NoWhitespaceInBlankLineFixer::class);    // [8]
+    //$ecsConfig->rule(SuperfluousWhitespaceSniff::class);      // [8]
 };
