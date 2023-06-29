@@ -5,10 +5,20 @@
  * vendor/bin/ecs check src --fix
  */
 
-use PhpCsFixer\Fixer\FunctionNotation\UseArrowFunctionsFixer;
-use PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer;
 use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
 use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
+
+use PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer;
+
+use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
+use PhpCsFixer\Fixer\Strict\StrictComparisonFixer;
+use PhpCsFixer\Fixer\LanguageConstruct\FunctionToConstantFixer;
+use PhpCsFixer\Fixer\Phpdoc\NoEmptyPhpdocFixer;
+use PhpCsFixer\Fixer\Phpdoc\NoSuperfluousPhpdocTagsFixer;
+use PhpCsFixer\Fixer\CastNotation\CastSpacesFixer;
+use PhpCsFixer\Fixer\Whitespace\NoWhitespaceInBlankLineFixer;
+use PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\SuperfluousWhitespaceSniff;
+
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
@@ -24,14 +34,13 @@ return static function (ECSConfig $ecsConfig): void {
     ]);
 
     //$ecsConfig->sets([
-    //    //SetList::PSR_12,
-    //    SetList::COMMON,
+    //    SetList::PSR_12,                                  // [1]
     //    //SetList::SYMPLIFY,
     //]);
 
     //$ecsConfig->skip([
-    //    BinaryOperatorSpacesFixer::class,
-    //    OrderedImportsFixer::class,
+    //    BinaryOperatorSpacesFixer::class,                 // [1]
+    //    OrderedImportsFixer::class,                       // [1]
     //]);
 
     //$ecsConfig->ruleWithConfiguration(BinaryOperatorSpacesFixer::class, [
@@ -41,5 +50,14 @@ return static function (ECSConfig $ecsConfig): void {
     //    '' => '',
     //]);
 
-    $ecsConfig->rule(VoidReturnFixer::class);
+    //$ecsConfig->rule(VoidReturnFixer::class);               // [2]
+
+    $ecsConfig->rule(DeclareStrictTypesFixer::class);
+    //$ecsConfig->rule(StrictComparisonFixer::class);
+    //$ecsConfig->rule(FunctionToConstantFixer::class);
+    //$ecsConfig->rule(NoEmptyPhpdocFixer::class);
+    //$ecsConfig->rule(NoSuperfluousPhpdocTagsFixer::class);
+    //$ecsConfig->rule(CastSpacesFixer::class);
+    //$ecsConfig->rule(NoWhitespaceInBlankLineFixer::class);
+    //$ecsConfig->rule(SuperfluousWhitespaceSniff::class);
 };
